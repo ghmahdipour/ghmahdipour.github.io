@@ -4,10 +4,10 @@ import { ScrollView, View, Text, Dimensions } from 'react-native'
 
 
 export const CustomScrollView = (props) => {
-    var Width = Dimensions.get('window').width
+    let Width = Dimensions.get('window').width
     const [current_page, set_current_page] = useState(1)
     const on_scroll = e => {
-        set_current_page(Math.min(Math.max(Math.floor(e.nativeEvent.contentOffset.x / Width + 0.9) + 1.0), React.Children.count(props.children)))
+        set_current_page( Math.floor(e.nativeEvent.contentOffset.x / Width + 0.9) + 1.0 )
     }
     
     return (

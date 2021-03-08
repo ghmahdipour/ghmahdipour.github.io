@@ -7,23 +7,27 @@ import { View, Text } from 'react-native'
 
 export const App = () => {
 
-  const [viewable_items, set_viewable_items] = useState({data : [], dataLoded: false})
+  const [viewable_items, set_viewable_items] = useState({data : [], data_loded: false})
   
   useEffect(() => {
     items_info.map((items, key) => {
       let targetwidth = Math .round(styles.itemsContainer.width[key])
       viewable_items.data.push(
-        <View key={key} style={[styles.itemsContainer.height,
-            {width:targetwidth},
-            {backgroundColor:items.backgroundColor}]}>
-            <Text style={styles.scrollItem}>{items.value}</Text>
+        <View key={key} 
+              style={
+              [styles.itemsContainer.height,
+              {width:targetwidth},
+              {backgroundColor:items.backgroundColor}]
+              }
+        >
+          <Text style={styles.scrollItem}>{items.value}</Text>
         </View>
       )
     })
-    set_viewable_items({ data: viewable_items.data , dataLoded: true})
+    set_viewable_items({ data: viewable_items.data , data_loded: true})
   },[])
       return(
-        viewable_items.dataLoded
+        viewable_items.data_loded
           ?
           <CustomScrollView>
             {viewable_items.data} 
